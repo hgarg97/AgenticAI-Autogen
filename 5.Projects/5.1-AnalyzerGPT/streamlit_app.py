@@ -3,10 +3,13 @@ import asyncio
 import os
 
 from teams.analyzer_gpt import getDataAnalyzerTeam
-from models.openrouter_model_client import get_model_client
-from config.docker_util import getDockerCommandLineExecutor,start_docker_container,stop_docker_container
+from models.openai_model_client import get_model_client
+from config.docker_util import getDockerCommandLineExcecutor,start_docker_container,stop_docker_container
 from autogen_agentchat.messages import TextMessage
 from autogen_agentchat.base import TaskResult
+from dotenv import load_dotenv
+
+load_dotenv(override=True)
 
 
 st.title('Analyser GPT- Digital Data Analyzer') 
@@ -81,7 +84,7 @@ if task:
             f.write(uploaded_file.getbuffer())
 
         openai_model_client= get_model_client()
-        docker = getDockerCommandLineExecutor()
+        docker = getDockerCommandLineExcecutor()
 
         error = asyncio.run(run_analyser_gpt(docker,openai_model_client,task))
 

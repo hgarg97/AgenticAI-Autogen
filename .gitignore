@@ -1,6 +1,7 @@
 autogen-venv
 .env
 5.Projects/5.1-AnalyzerGPT/temp
+temp/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
